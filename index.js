@@ -126,24 +126,44 @@ function genRow(fileName, foodName, foodCode, quantity, angle1, angle2, color, m
 }
 
 const table = document.querySelector('table')
+const form = document.querySelector("form")
 
-function ExportExcel(type, fn, dl) {
+function ExportExcel() {
+    const formData = new FormData(form)
+    const fileName = formData.get("food-name")
     var elt = document.getElementById('data-table');
     console.log(elt)
     var wb = XLSX.utils.table_to_book(elt, {sheet:"Sheet JS"});
-    return dl ?
-       XLSX.write(wb, {bookType:type, bookSST:true, type: 'base64'}) :
-       XLSX.writeFile(wb, fn || ('SheetJSTableExport.' + (type || 'xlsx')));
+    return XLSX.writeFile(wb, `${fileName}.xlsx`);
+
 }
 
 
 
-const form = document.querySelector('form')
 form.onsubmit = (ev) => {
     ev.preventDefault()
     const formData = new FormData(ev.target)
     const foodName = formData.get("food-name")
     const foodCode = formData.get("code")
+    const colorOpt = formData.get('colorOpt')
+    let new_meta4
+
+    const legacy_tbody = document.querySelector('tbody')
+    if (legacy_tbody) {
+        table.removeChild(legacy_tbody)
+    }
+
+
+    if (colorOpt == 1) {
+        new_meta4 = meta4.filter(item => item.code != 4)
+    } else if (colorOpt == 2) {
+        new_meta4 = meta4.filter(item => item.code != 3)
+    } else if (colorOpt == 3) {
+        new_meta4 = meta4.filter(item => item.code != 1)
+    } else {
+        return
+    }
+    console.log(new_meta4)
 
     const tbody = document.createElement('tbody')
 
@@ -151,7 +171,7 @@ form.onsubmit = (ev) => {
     for (const _1st of meta1) {
         for (const _2nd of meta2) {
             for (const _3rd of meta3) {
-                for (const _4th of meta4) {
+                for (const _4th of new_meta4) {
                     for (const _5th of meta5) {
                         for (const _6th of meta6) {
                             const numStr = num.toString().padStart(4, '0')
