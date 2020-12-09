@@ -79,15 +79,15 @@ const meta6 = [
         },
         {
             code: 2,
-            name: "500lux"
+            name: "750lux"
         },
         {
             code: 3,
-            name: "500lux"
+            name: "1000lux"
         },
         {
             code: 4,
-            name: "500lux"
+            name: "1250lux"
         }
     ]
 
@@ -174,19 +174,9 @@ form.onsubmit = (ev) => {
                 for (const _4th of new_meta4) {
                     for (const _5th of meta5) {
                         for (const _6th of meta6) {
-                            const numStr = num.toString().padStart(4, '0')
+                            const numStr = num.toString().padStart(4, "0")
                             const filename = `${foodCode}_${_1st.code}${_2nd.code}${_3rd.code}${_4th.code}${_5th.code}${_6th.code}_${numStr}`
-                            const tr = genRow(
-                                filename,
-                                foodName,
-                                foodCode,
-                                _1st.name,
-                                _2nd.name,
-                                _3rd.name,
-                                _4th.name,
-                                _5th.name,
-                                _6th.name
-                            )
+                            const tr = genRow(filename, foodName, foodCode, _1st.name, _2nd.name, _3rd.name, _4th.name, _5th.name, _6th.name)
                             tbody.appendChild(tr)
                             num++
                         }
