@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container">
+<form action="">
+    <div class="row mt-3">
+        <div class="col">
+            <input type="text" name="food-name" class="form-control" placeholder="음식명">
+        </div>
+        <div class="col">
+            <input type="text" name="code" class="form-control" placeholder="코드">
+        </div>
+        <div class="col">
+            <button id="btn-generate" class="btn btn-primary" type="submit">데이터 생성</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-secondary" onclick="ExportExcel('xlsx')">엑셀 다운로드</button>
+        </div>
+    </div>
+</form>
+<table class="table" id="data-table">
+        <thead>
+            <tr>
+                <th>파일번호</th>
+                <th>음식명</th>
+                <th>코드</th>
+                <th>정량</th>
+                <th>촬영각</th>
+                <th>방위각</th>
+                <th>용기색상</th>
+                <th>용기재질</th>
+                <th>조도</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
