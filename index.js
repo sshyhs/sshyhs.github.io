@@ -159,7 +159,20 @@ form.onsubmit = (ev) => {
     } else if (colorOpt == 2) {
         new_meta4 = meta4.filter(item => item.code != 3)
     } else if (colorOpt == 3) {
-        new_meta4 = meta4.filter(item => item.code != 1)
+        new_meta4 = [
+            {
+                code: 4,
+                name: "핑크계열",
+            },
+            {
+                code: 2,
+                name: "블루계열",
+            },
+            {
+                code: 3,
+                name: "검정계열",
+            },
+        ]
     } else {
         return
     }
